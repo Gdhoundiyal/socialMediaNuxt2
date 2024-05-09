@@ -91,9 +91,10 @@ export default {
   align-items: center;
   height: 100vh;
   width: 100vw;
-  background-color: #000000;
+  background-color: #201d22;
   color: white;
 }
+
 
 /* Right container */
 .Right-cont {
@@ -101,7 +102,7 @@ export default {
   justify-content: center;
   align-items: center;
   width: 55vw;
-
+  padding: 20px;
   background-color: #2c282e;
   border-radius: 10px;
   padding: 30px;
@@ -110,9 +111,10 @@ export default {
 .logindiv {
   width: 35vw;
   padding: 30px;
-  background-color: #201d22;
+  background-color: #2c282e;
   border-radius: 10px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+
 }
 
 .heading {
@@ -125,6 +127,7 @@ export default {
 }
 
 .heading p {
+
   font-size: 20px;
   margin: 20px 0;
 }
@@ -154,8 +157,8 @@ export default {
   border: 1px solid #201d22;
   border-radius: 5px;
   box-sizing: border-box;
-  background-color: #0d0c0d;
-  color: #fff;
+  background-color: #201d22;
+  color: #fff
 }
 
 .errormsg {
@@ -217,6 +220,7 @@ export default {
   justify-content: center;
   background-color: #2c282e;
   padding-top: 7px;
+
 }
 
 .socialicons {
@@ -232,7 +236,8 @@ export default {
 .Registercontent {
   text-align: center;
   font-size: 16px;
-  padding-top: 15px;
+  padding-top: 15px; 
+ 
 }
 .signup {
   color: #6838cf;

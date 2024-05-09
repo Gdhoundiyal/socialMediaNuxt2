@@ -140,7 +140,6 @@ export default {
   margin: 20px;
   background-color: #2c282e;
   border-radius: 10px;
-
   padding: 30px;
 }
 

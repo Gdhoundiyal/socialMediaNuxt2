@@ -12,16 +12,66 @@
 
 // let openmod = ref(false)
 const userDetailsWithImage = [
-    { key: 1, name: "Andrew", imageUrl: "https://picsum.photos/200/300" },
-    { key: 2, name: "Emma", imageUrl: "https://picsum.photos/200/300" },
-    { key: 3, name: "James", imageUrl: "https://picsum.photos/200/300" },
-    { key: 4, name: "Olivia", imageUrl: "https://picsum.photos/200/300" },
-    { key: 5, name: "William", imageUrl: "https://picsum.photos/200/300" },
-    { key: 6, name: "Sophia", imageUrl: "https://picsum.photos/200/300" },
-    { key: 7, name: "Michael", imageUrl: "https://picsum.photos/200/300" },
-    { key: 8, name: "Isabella", imageUrl: "https://picsum.photos/200/300" },
-    { key: 9, name: "John", imageUrl: "https://picsum.photos/200/300" },
-    { key: 10, name: "Amelia", imageUrl: "https://picsum.photos/200/300" },
+{ 
+    name: "Andrew", 
+    imageUrl: "https://source.unsplash.com/800x600/?nature,water", 
+    profileimageUrl: "https://randomuser.me/api/portraits/women/1.jpg",
+    description: "A stunning view of nature and water. Enjoy the beauty of the outdoors." 
+  },
+  { 
+    name: "Emma", 
+    imageUrl: "https://source.unsplash.com/800x600/?technology", 
+    profileimageUrl: "https://randomuser.me/api/portraits/men/2.jpg",
+    description: "Cutting-edge technology and innovation. Explore the latest advancements." 
+  },
+  { 
+    name: "James", 
+    imageUrl: "https://source.unsplash.com/800x600/?architecture", 
+    profileimageUrl: "https://randomuser.me/api/portraits/women/3.jpg",
+    description: "Architectural marvels and urban landscapes. Discover the beauty of design." 
+  },
+  { 
+    name: "Olivia", 
+    imageUrl: "https://source.unsplash.com/800x600/?travel", 
+    profileimageUrl: "https://randomuser.me/api/portraits/women/4.jpg",
+    description: "Exciting travel destinations and breathtaking landscapes. Plan your next adventure." 
+  },
+  { 
+    name: "William", 
+    imageUrl: "https://source.unsplash.com/800x600/?food", 
+    profileimageUrl: "https://randomuser.me/api/portraits/men/5.jpg",
+    description: "Delicious food and culinary delights. Savor the flavors of gourmet cuisine." 
+  },
+  { 
+    name: "Sophia", 
+    imageUrl: "https://source.unsplash.com/800x600/?fashion", 
+    profileimageUrl: "https://randomuser.me/api/portraits/women/6.jpg",
+    description: "Fashion trends and style inspiration. Express your unique sense of fashion." 
+  },
+  { 
+    name: "Michael", 
+    imageUrl: "https://source.unsplash.com/800x600/?music", 
+    profileimageUrl: "https://randomuser.me/api/portraits/men/7.jpg",
+    description: "Soulful melodies and rhythmic beats. Experience the power of music." 
+  },
+  { 
+    name: "Isabella", 
+    imageUrl: "https://source.unsplash.com/800x600/?art", 
+    profileimageUrl: "https://randomuser.me/api/portraits/men/8.jpg",
+    description: "Creative expression and artistic vision. Immerse yourself in the world of art." 
+  },
+  { 
+    name: "John", 
+    imageUrl: "https://source.unsplash.com/800x600/?sports", 
+    profileimageUrl: "https://randomuser.me/api/portraits/men/9.jpg",
+    description: "Athletic achievements and adrenaline-fueled action. Embrace the spirit of sports." 
+  },
+  { 
+    name: "Amelia", 
+    imageUrl: "https://source.unsplash.com/800x600/?animals", 
+    profileimageUrl: "https://randomuser.me/api/portraits/women/10.jpg",
+    description: "Adorable animals and wildlife wonders. Connect with nature's furry friends." 
+  },
 
 ];
 

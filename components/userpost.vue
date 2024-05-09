@@ -62,7 +62,7 @@ const props = defineProps({
                 <div class="User-container">
                     <div class="User-box">
                         <div class="img-div">
-                            <img src="../assets/adamzempa.jpg" alt="An Image of a Man" height="34px"
+                            <img :src=' props.user.profileimageUrl 'alt="An Image of a Man" height="34px"
                                 width="34px" class="image" />
                         </div>
                     </div>
