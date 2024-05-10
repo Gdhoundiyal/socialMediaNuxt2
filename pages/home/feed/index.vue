@@ -15,19 +15,20 @@ const userDetailsWithImage = [
 { 
     name: "Andrew", 
     imageUrl: "https://source.unsplash.com/800x600/?nature,water", 
-    profileimageUrl: "https://randomuser.me/api/portraits/women/1.jpg",
+    profileimageUrl: "https://randomuser.me/api/portraits/men/13.jpg",
     description: "A stunning view of nature and water. Enjoy the beauty of the outdoors." 
   },
+  
   { 
     name: "Emma", 
     imageUrl: "https://source.unsplash.com/800x600/?technology", 
-    profileimageUrl: "https://randomuser.me/api/portraits/men/2.jpg",
+    profileimageUrl: "https://randomuser.me/api/portraits/women/2.jpg",
     description: "Cutting-edge technology and innovation. Explore the latest advancements." 
   },
   { 
     name: "James", 
     imageUrl: "https://source.unsplash.com/800x600/?architecture", 
-    profileimageUrl: "https://randomuser.me/api/portraits/women/3.jpg",
+    profileimageUrl: "https://randomuser.me/api/portraits/men/3.jpg",
     description: "Architectural marvels and urban landscapes. Discover the beauty of design." 
   },
   { 

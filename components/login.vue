@@ -8,14 +8,14 @@
             <p>Log in to continue with JustConnect</p>
           </div>
         </div>
-        <form @submit="onSubmit">
+        <form @submit.prevent="onSubmit">
           <div class="usernamediv">
             <label class="usernametext" for="name">Username</label>
             <input
               class="usernameinputbox"
               placeholder="Enter Username"
               type="text"
-              v-model="username"
+              v-model="values.username"
             />
             <!-- <span class="errormsg">{{ errors?.username }}</span> -->
           </div>
@@ -25,17 +25,18 @@
               class="userpasswordinputbox"
               placeholder="Enter Password"
               type="password"
-              v-model="password"
+              v-model="values.password"
             />
             <!-- <span cl
               ass="errormsg">{{ errors?.password }}</span> -->
           </div>
           <div class="Loginbtndiv">
-            <button v-if="isloading" class="loginbtn btnspinner">
+            <!-- <button v-if="isloading" class="loginbtn btnspinner">
               <i class="pi pi-spin pi-spinner-dotted"></i>
-            </button>
+            </button> -->
             <!-- <Nuxt-link to="/signup" class="signup">Sign Up</Nuxt-link> -->
-            <Nuxt-link  to="/home/feed" v-else class="loginbtn">Login</Nuxt-link>
+            <button   class="loginbtn">Login</button>
+            <!-- <Nuxt-link  to="/home/feed" v-else class="loginbtn">Login</Nuxt-link> -->
           </div>
           <div class="Signinwithdiv">
             <div class="leftLine"></div>
@@ -62,6 +63,9 @@
         </div>
       </div>
     </div>
+    {{ JSON.stringify(values, 0, 1) }}
+    <div> {{ usersignupData }}</div>
+    <div> {{ userloginData }}</div>
   </div>
 </template>
 
@@ -70,12 +74,24 @@ import { ref } from "vue";
 export default {
   data() {
     return {
-      username: null,
+      values: {
+        username: null,
       password: null,
+      }
+    
     };
+  },
+  computed:{
+    userloginData(){
+      return this.$store.state.loginStore.values
+    },
+    usersignupData(){
+      return this.$store.state.signupStore.values
+    }
   },
   methods: {
     onSubmit() {
+      this.$store.dispatch('updatevalues',this.values)
       console.log("values");
     },
   },
@@ -178,6 +194,8 @@ export default {
   border: none;
   border-radius: 5px;
   cursor: pointer;
+  text-decoration: none;
+    text-align: center;
 }
 
 .btnspinner {

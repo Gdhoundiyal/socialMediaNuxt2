@@ -4,14 +4,13 @@
 // import Messagebox from './chat-messages.vue';
 // import { object } from 'yup';
 // import Messages from './chat-messages.vue';
-
 // const data = this.$route.params.userdata;
 // console.log(data);
-let props = defineProps({
-  userdata: Object,
-});
+// let props = defineProps({
+//   userdata: Object,
+// });
 // const userdetail = JSON.parse(props.userData);
-console.log("userdatafrom props", props.userdata);
+// console.log("userdatafrom props", props.userdata);
 </script>
 <template>
   <div class="Chatcontainer">
@@ -20,6 +19,7 @@ console.log("userdatafrom props", props.userdata);
     <userMsgFooter />
   </div>
 </template>
+
 
 <style scoped>
 .Chatcontainer {

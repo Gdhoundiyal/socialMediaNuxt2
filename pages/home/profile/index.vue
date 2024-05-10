@@ -1,7 +1,9 @@
 <script >
 import { ref, watch } from "vue";
+import vClickOutside from 'v-click-outside'
+import EditModal from "../../../components/editModal.vue";
+import imageModal from "../../../components/imageModal.vue";
 // import userPost from "../feed/user-post.vue";
-// import imageModal from "./imageModal.vue";
 // import editModal from "./editModal.vue";
 // import { useProfileStore } from "@/stores/profile";
 
@@ -11,9 +13,13 @@ export default {
       openViewImg: false,
       openEditModal: false,
       updatedImg: false,
-      user: { name: "SHoleyky" }
+      user: {  name: "William", 
+    imageUrl: "https://source.unsplash.com/800x600/?food", 
+    profileimageUrl: "https://randomuser.me/api/portraits/men/10.jpg",
+    description: "Delicious food and culinary delights. Savor the flavors of gourmet cuisine." }
     };
   },
+
   // You can use the created() lifecycle hook for watching reactive variables
   created() {
     // const profileStore = useProfileStore();
@@ -43,7 +49,20 @@ export default {
     //     }
     // )
   },
+    computed:{
+    modalStatus() {
+      return this.$store.state.profileStore.modalstat
+    },
+  },
+
+  directives: {
+      clickOutside: vClickOutside.directive
+    },
+   
   methods: {
+    outside() {
+        this.openEditModal = false
+    },
     imgViewModal() {
       this.openViewImg = true;
     },
@@ -51,14 +70,11 @@ export default {
       this.openViewImg = false;
     },
     openEdit() {
+      // this.$store.dispatch('updateModal', true)
       this.openEditModal = true;
     },
-    closeEditModal() {
-      this.openEditModal = false;
-    }
   },
 };
-
 
 
 </script>
@@ -67,6 +83,7 @@ export default {
     <div class="profilecontainer">
       <div class="profile">
         <div class="imagediv">
+        
           <img
             v-if="updatedImg"
             class="profileimg"
@@ -122,7 +139,7 @@ export default {
       <div class="Editdiv">
         <p class="Editbtn" @click="openEdit">Edit Profile</p>
         <div v-if="openEditModal" class="modalContainer">
-          <editModal v-click-outside="closeEditModal" />
+          <EditModal v-click-outside="outside" />
         </div>
       </div>
       <userpost :user="user" />
@@ -205,11 +222,6 @@ export default {
 
 /* // biodiv // */
 
-.biodiv {
-  padding: 20px;
-  border: 1px solid #888;
-  border-radius: 5px;
-}
 
 .biodiv p {
   padding: 5px;
@@ -218,10 +230,7 @@ export default {
 /* // Editdiv // */
 
 .Editdiv {
-  padding: 10px;
-  border: 1px solid #888;
   text-align: center;
-  border-radius: 5px;
 }
 
 .Editdiv p {
