@@ -1,24 +1,25 @@
 <script setup>
 // import { useProfileStore } from '@/stores/profile';
 // import { storeToRefs } from 'pinia';
-
+// import {useRoute} from 'nuxt'
 // const store = useProfileStore()
 // const {userdetails} = storeToRefs(store)
 // console.log(userdetails.value)
-const props = defineProps({
-  user: Object,
-});
-console.log("proopsss ", props.user);
+
+// console.log("proopsss ", props.user);
+
+const userData = JSON.parse($nuxt.$route.query.userdata);
+console.log("HELLLOOOO",userData)
 </script>
 <template>
-  <div class="container">
+    <div class="container">
+      
     <div class="profilecontainer">
       <div class="profile">
         <div class="imagediv">
           <img
             class="profileimg"
-            
-            src="../../../../assets/adamzempa.jpg"
+            :src="userData?.profileimageUrl"
             height="150px"
             width="150px"
           />
@@ -43,10 +44,11 @@ console.log("proopsss ", props.user);
             <p class="followertext">follower</p>
           </div>
         </div>
-      </div>
+    </div>
+   
       <div class="biodiv">
         <!-- <p v-if="updatedImg">{{ name }}</p> -->
-        <p>Andrew</p>
+        <p>{{ userData?.name}}</p>
         <p>
           Lorem ipsum dolor sit amet consectetur adipisicing elit. t illum esse
           non quaerat minima nam.
@@ -138,20 +140,21 @@ console.log("proopsss ", props.user);
 }
 /* // biodiv // */
 .biodiv {
-  padding: 20px;
-  border: 1px solid #888;
-  border-radius: 5px;
+
 }
 
 .biodiv p {
   padding: 5px;
 }
+
+.follow{
+    display: flex;
+    gap: 10px;
+}
 /* // Editdiv // */
 .Editdiv {
-  padding: 10px;
-  border: 1px solid #888;
+
   text-align: center;
-  border-radius: 5px;
 }
 .Editbtn {
   padding: 9px;
@@ -160,6 +163,7 @@ console.log("proopsss ", props.user);
   border: none;
   border-radius: 5px;
   cursor: pointer;
+  width: 50%;
 }
 /* post section */
 .feedCont {

@@ -24,6 +24,7 @@ export default {
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
+    { src: "@/plugins/vClickOutside", ssr: false }
   ],
 
   router: {
@@ -50,3 +51,17 @@ export default {
   build: {
   }
 }
+
+// module.exports = {
+//   configureWebpack: {
+//     module: {
+//       rules: [
+//         {
+//           test: /\.mjs$/,
+//           include: /node_modules/,
+//           type: "javascript/auto"
+//         }
+//       ] 
+//     }
+//   }
+// }

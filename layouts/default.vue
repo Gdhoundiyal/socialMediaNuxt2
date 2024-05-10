@@ -1,6 +1,6 @@
   <template>
     <div id="App-Container">
-      <div class="Header-Sec">
+      <div id="Header-Sec">
         <sidebar/>
       </div>
       <div id="Chat-Sec">
@@ -18,22 +18,24 @@
   #App-Container {
     display: flex;
     overflow: hidden;
-    background-color: #121212;
   }
   
-  .Header-Sec {
-    height: 100vh;
-    width: 20vw;
-    background-color: #121212;
-    color: #878a92;
-  }
-  
-  #Chat-Sec {
-    height: 100vh;
-    width: 80vw;
-    background: #0e0f0f;
-    color: #878a92;
-  }
+  #Header-Sec {
+  height: 100vh;
+  width: 20vw;
+  background-color: #121212;
+  color: #878a92;
+}
+
+#Chat-Sec {
+  height: 100vh;
+  width: 80vw;
+  background: #0e0f0f;
+  color: #878a92;
+}
+
+
+
   
   .navcontainer{
       padding: 7px

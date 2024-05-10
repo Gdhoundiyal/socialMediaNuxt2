@@ -1,72 +1,53 @@
-<script setup>
-// import { useRouter } from 'vue-router';
-// import { useloginStore } from '@/stores/login';
-// import { storeToRefs } from 'pinia';
-// import { useNavstore } from '@/stores/nav';
-// import { useProfileStore } from '@/stores/profile';
-// import { ref, watch } from 'vue';
+<script >
 
-// const store = useloginStore()
-// const { Authenticate, logoutbtn } = storeToRefs(store)
-
-// // Nav Store //
-// const navStore = useNavstore()
-// let {sectionName } = storeToRefs(navStore)
-
-
-// // Profile Store //
-// const updatedImg = ref(false)
-// const profileStore = useProfileStore()
-// const profile = ref(profileStore.userdetails.profile);
-
-
-
-// watch(() => profileStore.userdetails.profile, (newValue) => {
-//       profile.value = newValue;
-//       updatedImg.value = true
-//     });
-
-// const route = useRouter()
-
-
-const logoutOn = () => {
-    // store.$patch((state)=>{
-    //     state.logoutbtn = !state.logoutbtn
-    // })
+export default {
+  data() {
+    return {
+      a: 56,
+      updatedImg: null,
+      logoutbtn: false
+    };
+  },
+  computed: {
+    navData() {
+      return this.$store.state.navStore.name
+    },
+	},
+  methods: {
+    logoutOn() {
+      
+    },
    
-}
-const logout = () => {
-    // store.$patch((state)=>{
-    //     state.logoutbtn = false
-    // })
-    // localStorage.clear();
-    // route.push('/')
-    // console.log("logout",  Authenticate.value)
-}
-const outside = () => {
-    // store.$patch((state)=>{
-    //     state.logoutbtn = false
-    // })
-}
+    logout() {
+      
+    },
+    logbtnoff() {
+       this.logoutbtn = true
+    },
+    outside() {
+        this.logoutbtn = false
+    }
+  }
+};
 </script>
 
 <template>
-    <div class="Navcont" @click="logbtnoff">
+    <div class="Navcont" >
         <div class="sectionName">
             <!-- <i class="pi pi-align-justify"></i> -->
-            <p>justconnect</p>
-            <!-- <p>{{sectionName}}</p> -->
+            <!-- <p>justconnect</p> -->
+            <p>{{navData}}</p>
         </div>
         
         <div>
             <div class="imagediv">
-                <img v-if="updatedImg" :src="profile" alt="an image of a boy" height="45px" width="45px"
+                <img v-if="updatedImg" :src="profile" alt="an image of a boy" @click="logbtnoff" height="45px" width="45px"
                     class="image" />
-                <img v-else src="../assets/userImg.jpg" alt="an image of a boy" height="45px" width="45px"
+                <img v-else src="../assets/userImg.jpg" alt="an image of a boy" @click="logbtnoff" height="45px" width="45px"
                     class="image" />
                 <div> 
                 <div v-if="logoutbtn" class="logoutdiv">
-                   <p @click="logout" v-click-outside="outside" class="logoutbtn">LogOut</p>
+                   <p  v-click-outside="outside" class="logoutbtn">LogOut</p>
                 </div>
                 </div>
             </div>
@@ -87,13 +68,16 @@ const outside = () => {
 }
 
 .sectionName {
-    padding: 10px;
+    padding: 10px 0 10px 30px;
     display: flex;
     align-items: center;
 }
 
 .sectionName p {
-    font-size: 20px
+    font-size: 21px;
+    color: #9d9d97;
+    font-family: sans-serif;
+    font-weight: 700;
 }
 
 .imagediv {

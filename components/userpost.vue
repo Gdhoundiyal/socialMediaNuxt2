@@ -24,7 +24,6 @@ let openmod = ref(false)
 //     { name: "Isabella", imageUrl: "https://picsum.photos/200/300" },
 //     { name: "John", imageUrl: "https://picsum.photos/200/300" },
 //     { name: "Amelia", imageUrl: "https://picsum.photos/200/300" },
-
 // ];
 
 function sendData(event) {
@@ -43,7 +42,7 @@ const outside = () => {
     openmod.value = false
 }
 const props = defineProps({
-    user:  Object
+    user: Object
 })
 
 // console.log(props)
@@ -62,23 +61,25 @@ const props = defineProps({
                 <div class="User-container">
                     <div class="User-box">
                         <div class="img-div">
-                            <img src="../assets/adamzempa.jpg" alt="An Image of a Man" height="34px"
-                                width="34px" class="image" />
+                            <img :src='props.user.profileimageUrl' alt="An Image of a Man" height="34px" width="34px"
+                                class="image" />
                         </div>
                     </div>
-                    <nuxt-link  :to="{ name: 'home-feed-user'}"  :user="props.user" class="UserName">
-                            <p>{{ props.user.name }}</p>
+                    <nuxt-link
+                        :to="{ name: 'home-feed-user', params: { user: props.user.name }, query: { userdata: JSON.stringify(props.user) } }"
+                        :user="props.user" class="UserName">
+                        <p>{{ props.user.name }}</p>
                     </nuxt-link>
-                
+
                 </div>
                 <div class="useroption">
                     <i class="pi pi-ellipsis-v option" @click="openEdit"></i>
                     <div v-if="openmod" class="logoutdiv" v-click-outside="outside">
                         <div class="logoutbtndiv">
-                           
+
                             <p>Edit</p>
                             <p>Delete</p>
-                           
+
 
                         </div>
                     </div>
@@ -89,13 +90,13 @@ const props = defineProps({
             <div class="media-cont">
 
                 <div class="media-box">
-                    <img :src="user.imageUrl" alt="An Image of a Man" class="mediaImage"/>
+                    <img :src="user.imageUrl" alt="An Image of a Man" class="mediaImage" />
                 </div>
             </div>
             <div class="icon-box">
                 <div class="piDiv">
                     <i class="pi pi-thumbs-up iconstyle">10</i>
-                    
+
                 </div>
                 <div class="piDiv">
                     <i class="pi pi-comment iconstyle">4</i>
@@ -122,7 +123,7 @@ const props = defineProps({
 
 .feedCont {
     width: 50vw;
-    background-color: #3a3a3a;
+    background-color: #1d1d1d;
     padding: 20px;
     margin: 8px 0;
     border-radius: 5px
@@ -142,7 +143,7 @@ const props = defineProps({
 }
 .UserName{
     text-decoration: none;
-    color: #878a92
+    color: white
 }
 .User-box {
     display: flex;
@@ -177,7 +178,7 @@ const props = defineProps({
     height: 22rem;
     width: 90%;
     margin: 10px 0;
-    border: 1px solid #898e8e;
+    border: 1px solid #202121;
     border-radius: 5px;
 }
 
@@ -199,7 +200,7 @@ const props = defineProps({
 
 .piDiv {
     width: 5vw;
-    color: #878a92;
+    color: white;
     border-radius: 4px;
     padding: 5px;
     display: flex;
@@ -221,7 +222,7 @@ const props = defineProps({
     left: -24px;
     z-index: 10;
     width: 3.5rem;
-    background: #393941;
+    background: #010101;
     border-radius: 5px;
     display: flex;
     flex-direction: column;
@@ -239,4 +240,13 @@ const props = defineProps({
     font-size: 14px
 }
 
-</style> 
+.description{
+    display: flex; 
+    align-items: center;
+    text-align: center;
+    padding: 20px;
+    height: 20px;
+    margin-left: 25px;
+}
+
+</style>

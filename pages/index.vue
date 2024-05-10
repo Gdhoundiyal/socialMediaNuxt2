@@ -3,7 +3,6 @@ export default {
   layout: 'home'
 }
 
-
 </script>
 <template >
   <div class="divv">

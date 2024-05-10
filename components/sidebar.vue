@@ -1,26 +1,23 @@
-<script setup>
-// import { useNavstore } from '@/stores/nav';
-import { ref } from 'vue';
-// import create from '../homeScreen/homeSection/create/create.vue';
-
-// const navStore = useNavstore()
-const openmodal = ref(false)
-
-
-const changeScreen = () => {
-  console.log('clicked')
-  // const name = event.currentTarget.getAttribute('name');
-
-//   navStore.updatesectionName(name)
-//   if (name === "Create") {
-//     openmodal.value = true;
-//     console.log('creaeted pressed')
-//   } else { console.log('else pressed') }
+<script>
+export default {
+  data() {
+    return {
+      openmodal: false
+    }
+  },
+ 
+  methods: {
+    changeScreen(event) {
+      const name = event.currentTarget.getAttribute('name');
+      console.log('clicked',  this.$store.mutations);
+      this.$store.dispatch('updateName', name)
+    },
+    outside() {
+      this.openmodal = false;
+    }
+  }
 }
 
-const outside = () => {
-  openmodal.value = false;
-}
 </script>
 <template>
   <div id="header-Container">
@@ -29,9 +26,7 @@ const outside = () => {
       <p>JustConnect</p>
     </div>
     <div id="icons">
-        <NuxtLink :to="{name: 'home-feed',
-         
-        }" class="routestyle">
+        <NuxtLink :to="{name: 'home-feed'}" class="routestyle">
         <div class="icon-div" name="Feed" @click="changeScreen">
           <i class="pi pi-th-large" id="styles"></i>
           <p>Home</p>
@@ -92,10 +87,13 @@ const outside = () => {
 .logo p {
   font-size: 20px;
   padding: 2px;
+  color: #75d375;
+    font-family: sans-serif;
+    font-weight: 600;
 }
 
 .routestyle {
-  color: #878a92;
+  color: white;
   text-decoration: none;
 }
 .routestyle:hover {
