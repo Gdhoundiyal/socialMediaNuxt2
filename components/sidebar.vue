@@ -1,24 +1,4 @@
-<script>
-export default {
-  data() {
-    return {
-      openmodal: false
-    }
-  },
- 
-  methods: {
-    changeScreen(event) {
-      const name = event.currentTarget.getAttribute('name');
-      console.log('clicked',  this.$store.mutations);
-      this.$store.dispatch('updateName', name)
-    },
-    outside() {
-      this.openmodal = false;
-    }
-  }
-}
 
-</script>
 <template>
   <div id="header-Container">
 
@@ -50,12 +30,12 @@ export default {
           <p>Message</p>
         </div>
       </NuxtLink>
-      <!-- <NuxtLink to="/home/Create" class="routestyle"> -->
+      <NuxtLink to="/home/create" class="routestyle">
       <div class="icon-div routestyle" name="Create" @click="changeScreen">
         <i class="pi pi-plus-circle" id="styles"></i>
         <p>Create</p>
       </div>
-      <!-- </NuxtLink> -->
+      </NuxtLink>
       <NuxtLink to="/home/profile" class="routestyle">
         <div class="icon-div" name="Profile" @click="changeScreen">
           <i class="pi pi-user" id="styles"></i>
@@ -63,16 +43,63 @@ export default {
         </div>
       </NuxtLink>
     </div>
-    <div v-if="openmodal"  v-click-outside="outside">
-      <create/>
+    <div v-if="openmodal"  class="modalContainer">
+      <create v-click-outside="outside"/>
     </div>
   </div>
 </template>
+
+<script>
+export default {
+  data() {
+    return {
+      openmodal: false
+    }
+  },
+  computed:{
+    openModal(){
+      this.openModal = true
+      return this.$store.state.navStore.openModal
+    }
+  },
+ 
+  methods: {
+    changeScreen(event) {
+      const name = event.currentTarget.getAttribute('name');
+      console.log('clicked',  name);
+      this.$store.dispatch('updateName', name)
+      if(name === 'Create'){
+        this.openmodal = true;
+        this.$store.dispatch('updateModal', true)
+      }
+    },
+    
+    outside() {
+      this.openmodal = false;
+      console.log(' outside modal clicked');
+      this.$store.dispatch('updateModal', false)
+    }
+  }
+}
+
+</script>
 
 <style scoped>
 #header-Container {
   height: 100vh;
   padding: 7px;
+}
+.modalContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    height: 100vh;
+    width: 100vw;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.6);
+    z-index: 999;
 }
 
 .logo {

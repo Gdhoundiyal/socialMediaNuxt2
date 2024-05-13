@@ -5,43 +5,31 @@ import { ref } from 'vue';
 
 export default {
   layout: 'home',
-  setup() {
-    const phone_number = ref(null);
-    const username = ref(null);
-    const password = ref(null);
-    const email = ref(null);
-
-    const onSubmit = () => {
-      const values = {
-        username: username.value,
-        email: email.value,
-        password: password.value,
-        phone_number: phone_number.value
-      };
-
-      console.log("values", values);
-
-      // axios.post(`${BASE_URL}register`, values)
-      //   .then(
-      //     (response) => {
-      //       console.log(response);
-      //       alert("User signed up successfully");
-      //       // Do other stuff after successful sign up
-      //     },
-      //     (error) => {
-      //       console.error(error);
-      //       // Handle error
-      //     }
-      //   );
-    };
-
+  data() {
     return {
-      phone_number,
-      username,
-      password,
-      email,
-      onSubmit
+      values: {
+        username: null,
+      password: null,
+      phone_number: null,
+      email: null,
+      },
+      emailRegex:  /^[^\s@]+@[^\s@]+\.[^\s@]+$/
     };
+  },
+  meta: {
+    requiresAuth: true
+  },
+methods:{
+    async onSubmit  ()  {
+
+      if(this.emailRegex.test(this.values.email)){
+        let res = await this.$store.dispatch('postSignupData',this.values)
+        console.log("res from signup api", res);
+      }else{
+        alert("Poor Email")
+      }
+     
+    }
   }
 };
 </script>
@@ -56,35 +44,35 @@ export default {
             <p>Get your free JustConnect account now</p>
           </div>
         </div>
-        <form @submit="onSubmit">
+        <form @submit.prevent="onSubmit">
           <div class="useremaildiv">
             <label class="useremailtext" for="email">Email</label>
             <input
               class="useremailinputbox"
               placeholder="Enter Email"
               type="text"
-              v-model="email"
+              v-model="values.email"
             />
             <label class="useremailtext" for="email">Phone Number</label>
             <input
               class="userphoneinputbox"
               placeholder="Enter Phone Num"
               type="text"
-              v-model="phone_number"
+              v-model="values.phone_number"
             />
             <label class="usernametext" for="name">Username</label>
             <input
               class="usernameinputbox"
               placeholder="Enter Username"
               type="text"
-              v-model="username"
+              v-model="values.username"
             />
             
             <label class="userpasswordtext" for="password">Password</label>
             <input
               class="userpasswordinputbox"
               placeholder="Enter Password"
-              v-model="password"
+              v-model="values.password"
             />
             <!-- <button v-if="isloading" class="loginbtn btnspinner">
               <i class="pi pi-spin pi-spinner-dotted"></i>

@@ -18,8 +18,9 @@ export default {
       
     },
    
-    logout() {
-      
+    logoutFunc() {
+      localStorage.clear()
+      this.$router.push('/')
     },
     logbtnoff() {
        this.logoutbtn = true
@@ -47,7 +48,7 @@ export default {
                     class="image" />
                 <div> 
                 <div v-if="logoutbtn" class="logoutdiv">
-                   <p  v-click-outside="outside" class="logoutbtn">LogOut</p>
+                   <p  @click="logoutFunc" v-click-outside="outside" class="logoutbtn">LogOut</p>
                 </div>
                 </div>
             </div>

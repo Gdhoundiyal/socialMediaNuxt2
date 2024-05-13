@@ -6,7 +6,13 @@
   </div>
 </template>
 
-<script setup>
+<script >
+export default {
+  meta: {
+    requiresAuth: true
+  },
+}
+
 
 </script>
 
