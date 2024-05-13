@@ -60,42 +60,45 @@
             Don't have an account ?
             <Nuxt-link to="/signup" class="signup">Sign Up</Nuxt-link>
           </p>
+          
         </div>
       </div>
     </div>
-    {{ JSON.stringify(values, 0, 1) }}
-    <div> {{ usersignupData }}</div>
-    <div> {{ userloginData }}</div>
   </div>
 </template>
 
 <script>
+// import axios from 'axios'
 import { ref } from "vue";
-export default {
-  data() {
-    return {
-      values: {
-        username: null,
-      password: null,
+// import {BASE_URL} from '../assets/constant'
+  export default {
+    data() {
+      return {
+        values: {
+          username: null,
+        password: null,
+        }
+      
+      };
+    },  
+    meta: {
+      requiresAuth: true
+    },
+    computed:{
+      userloginData(){
+        return this.$store.state.loginStore.values
+      },
+      usersignupData(){
+        return this.$store.state.signupStore.values
       }
-    
-    };
-  },
-  computed:{
-    userloginData(){
-      return this.$store.state.loginStore.values
     },
-    usersignupData(){
-      return this.$store.state.signupStore.values
-    }
-  },
-  methods: {
-    onSubmit() {
-      this.$store.dispatch('updatevalues',this.values)
-      console.log("values");
+    methods: {
+    async onSubmit() {
+      let res = await this.$store.dispatch('postLoginData',this.values)
+      console.log("values", res);
+      },
     },
-  },
-};
+  };
 </script>
 
 <style scoped>

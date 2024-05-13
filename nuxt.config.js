@@ -24,13 +24,16 @@ export default {
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
+    '~/plugins/router-auth.js',
     { src: "@/plugins/vClickOutside", ssr: false }
   ],
 
   router: {
     // Set the initial page to be rendered
-    default: '/home/feed'
+    default: '/home/feed',
+    
   },
+  
   
   layouts: {
     home: `@/layouts/authlayout.vue`
@@ -44,13 +47,19 @@ export default {
   ],
 
   // Modules: https://go.nuxtjs.dev/config-modules
+    axios: {
+      API_BASE_URL: process.env.BASE_URL
+    },
+  
   modules: [
+    '@nuxtjs/axios',
   ],
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
   }
 }
+
 
 // module.exports = {
 //   configureWebpack: {

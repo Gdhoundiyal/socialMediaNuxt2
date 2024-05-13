@@ -104,7 +104,7 @@ export default {
           />
           <div v-if="openViewImg" class="modalContainer">
             <imageModal
-              v-click-outside="closeImgModal"
+              :v-click-outside="closeImgModal"
               imagePath="image123.jpg"
             />
           </div>
